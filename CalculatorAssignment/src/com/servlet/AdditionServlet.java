@@ -1,0 +1,73 @@
+package com.servlet;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.thinkitive.CalculatorOpImpl;
+
+/**
+ * Servlet implementation class AdditionServlet
+ */
+@WebServlet("/AdditionServlet")
+public class AdditionServlet extends HttpServlet {
+	CalculatorOpImpl cdao=new CalculatorOpImpl();
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public AdditionServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session=request.getSession();
+	String type=request.getParameter("type");
+	
+		int num1=Integer.parseInt(request.getParameter("num1"));
+		int num2=Integer.parseInt(request.getParameter("num2"));
+		if(type.equals("addition")) {
+			double addition=cdao.addition(num1, num2);
+			PrintWriter out=response.getWriter();
+			out.println(addition);
+		}
+		if(type.equals("sub")) {
+			double sub=cdao.substraction(num1, num2);
+			PrintWriter out=response.getWriter();
+			out.println(sub);
+		}
+		if(type.equals("mul")) {
+			double mul=cdao.multiplication(num1, num2);
+			PrintWriter out=response.getWriter();
+			out.println(mul);
+		}
+		if(type.equals("div")) {
+			double div=cdao.division(num1, num2);
+			PrintWriter out=response.getWriter();
+			out.println(div);
+		}
+		
+		
+		
+	}
+
+}
