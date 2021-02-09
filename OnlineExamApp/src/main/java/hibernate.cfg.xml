@@ -1,0 +1,42 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM 
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+   <session-factory>
+   
+      <property name = "hibernate.dialect">
+         org.hibernate.dialect.MySQLDialect
+      </property>
+      
+      <property name = "hibernate.connection.driver_class">
+         com.mysql.jdbc.Driver
+      </property>
+      
+      <!-- Assume test is the database name -->
+      
+      <property name = "hibernate.connection.url">
+         jdbc:mysql://localhost:3306/OnlineExamApp
+      </property>
+      
+      <property name = "hibernate.connection.username">
+         root
+      </property>
+      
+      <property name = "hibernate.connection.password">
+         sachin
+      </property>
+      
+      <property name="hibernate.hbm2ddl.auto">update</property>
+      
+      <property name="hibernate.show_sql">true</property>
+      
+      <mapping class="com.thinkitive.model.RegisteredUsers"></mapping> 
+       <mapping class="com.thinkitive.model.Question"></mapping> 
+        <mapping class="com.thinkitive.model.Exam"></mapping> 
+        <mapping class="com.thinkitive.model.Result"></mapping> 
+      <mapping class="com.thinkitive.model.StudentRegisterRequest"></mapping> 
+  
+    <mapping class="com.thinkitive.model.TeacherRegisterRequest"></mapping> 
+      
+   </session-factory>
+</hibernate-configuration>
